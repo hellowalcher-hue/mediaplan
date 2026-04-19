@@ -1,20 +1,17 @@
 <?php
-// api/config/database.php
-// Заменить на реальные данные с reg.ru
-
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'your_db_name');   // из панели reg.ru
-define('DB_USER', 'your_db_user');
-define('DB_PASS', 'your_db_pass');
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'mediaplan');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') ?: '');
+define('DB_PORT', getenv('DB_PORT') ?: '3306');
 define('DB_CHARSET', 'utf8mb4');
 
 function getDB(): PDO {
     static $pdo = null;
     if ($pdo !== null) return $pdo;
-
     $dsn = sprintf(
-        'mysql:host=%s;dbname=%s;charset=%s',
-        DB_HOST, DB_NAME, DB_CHARSET
+        'mysql:host=%s;port=%s;dbname=%s;charset=%s',
+        DB_HOST, DB_PORT, DB_NAME, DB_CHARSET
     );
     $options = [
         PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
