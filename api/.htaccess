@@ -1,0 +1,16 @@
+Options -Indexes
+
+# Routing: all requests -> index.php
+RewriteEngine On
+RewriteBase /api/
+
+# Allow real files (index.php itself)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^ index.php [QSA,L]
+
+# Security headers
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "DENY"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"

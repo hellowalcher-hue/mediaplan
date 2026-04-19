@@ -1,0 +1,82 @@
+/* src/components/Sidebar/Sidebar.css */
+
+.sidebar {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px 8px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sidebar-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 8px 12px;
+}
+
+.sidebar-section { margin-bottom: 12px; }
+
+.sidebar-section-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 5px;
+  padding-left: 4px;
+}
+
+.sidebar-card {
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--border-md);
+  padding: 6px 8px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+  background: var(--surface);
+}
+
+.sidebar-card:hover { box-shadow: var(--shadow-sm); }
+
+.sidebar-card--done { opacity: 0.5; }
+
+.sidebar-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 1px 5px;
+  border-radius: 10px;
+  margin-bottom: 3px;
+}
+
+.sidebar-card-title {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.sidebar-card-project {
+  font-size: 10px;
+  color: var(--text-3);
+  margin-top: 2px;
+}

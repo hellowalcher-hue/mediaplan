@@ -1,0 +1,336 @@
+/* src/components/Modals/ActivityModal.css */
+
+.activity-modal {
+  display: flex;
+  flex-direction: column;
+  max-height: 88vh;
+}
+
+/* Header */
+.amodal-header {
+  padding: 20px 24px 0;
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+  z-index: 2;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.amodal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border-md);
+  background: var(--surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-3);
+  transition: all 0.15s;
+}
+.amodal-close:hover { background: var(--surface2); color: var(--text); }
+
+/* Title input — big and prominent */
+.amodal-title-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  padding: 4px 0;
+  background: transparent;
+  line-height: 1.25;
+}
+.amodal-title-input::placeholder { color: var(--text-3); }
+
+/* Tags selector row */
+.amodal-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 0 14px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+.tag-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px dashed var(--border-md);
+  background: transparent;
+  color: var(--text-3);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font);
+  position: relative;
+}
+.tag-selector:hover { border-color: var(--text-3); color: var(--text-2); }
+.tag-selector.selected {
+  border-style: solid;
+  border-color: transparent;
+}
+
+.tag-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: var(--surface);
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 100;
+  min-width: 160px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tag-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.1s;
+  border: none;
+  background: transparent;
+  font-family: var(--font);
+  color: var(--text);
+  text-align: left;
+}
+.tag-dropdown-item:hover    { background: var(--surface2); }
+.tag-dropdown-item.active   { background: var(--accent-bg); }
+.tag-dropdown-item-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.tag-dropdown-none {
+  font-size: 12px;
+  color: var(--text-3);
+  padding: 4px 10px;
+  border-top: 1px solid var(--border);
+  margin-top: 2px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.tag-dropdown-none:hover { background: var(--surface2); }
+
+/* Body */
+.amodal-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Short desc */
+.amodal-desc-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--text-2);
+  background: transparent;
+  resize: none;
+  line-height: 1.5;
+  padding: 0;
+  min-height: 22px;
+}
+.amodal-desc-input::placeholder { color: var(--text-3); }
+
+/* Date row */
+.amodal-dates {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.amodal-date-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--surface2);
+  border: 1.5px solid var(--border-md);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  font-family: var(--font);
+  transition: all 0.15s;
+  position: relative;
+}
+.amodal-date-btn:hover { border-color: var(--text-3); }
+.amodal-date-btn input[type="date"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.amodal-date-sep {
+  color: var(--text-3);
+  font-size: 13px;
+}
+
+/* Collapsible extras */
+.amodal-extras-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-family: var(--font);
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+  text-transform: uppercase;
+}
+.amodal-extras-toggle:hover { color: var(--text-2); }
+.amodal-extras-toggle-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  transition: background 0.15s;
+}
+
+.amodal-extras {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  background: var(--surface2);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.amodal-extras-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Comment field */
+.amodal-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.amodal-comment-input {
+  width: 100%;
+  border: 1.5px solid var(--border-md);
+  border-radius: var(--radius-sm);
+  outline: none;
+  font-family: var(--font);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--surface);
+  resize: none;
+  line-height: 1.5;
+  padding: 8px 12px;
+  min-height: 64px;
+  transition: border-color 0.15s;
+}
+.amodal-comment-input:focus { border-color: var(--text); }
+.amodal-comment-input::placeholder { color: var(--text-3); }
+
+/* Tabs for details/tasks */
+.amodal-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin: 0 -24px;
+  padding: 0 24px;
+}
+
+.amodal-tab {
+  padding: 10px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-3);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+  margin-bottom: -1px;
+  font-family: var(--font);
+}
+.amodal-tab:hover { color: var(--text-2); }
+.amodal-tab--active { color: var(--text); border-bottom-color: var(--text); }
+
+/* Checkboxes row */
+.amodal-checks {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.amodal-check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  cursor: pointer;
+  user-select: none;
+}
+.amodal-check input { cursor: pointer; accent-color: var(--text); }
+
+/* Footer */
+.amodal-footer {
+  padding: 14px 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  position: sticky;
+  bottom: 0;
+}
+
+.amodal-footer-left { margin-right: auto; }
